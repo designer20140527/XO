@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-color: #1cc9f2;
+  --font-montserrat: var(--font-montserrat);
+  --font-poppins: var(--font-poppins);
+}
+
+body {
+  color: white;
+  background-color: #0a0e14;
+}
+
+.hero-container,
+.card-container {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-container {
+  padding: 80px 50px;
+  background-color: rgba(18, 22, 27, 0.85);
+}
+
+.card-container {
+  padding: 30px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.03);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+  box-shadow: 0 0 25px -5px rgba(28, 201, 242, 0.1);
+}
+
+/* Top Left Corner */
+.corner-top-left::before,
+.corner-top-left::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+}
+
+.corner-top-left::before {
+  top: -2px;
+  left: -2px;
+  width: 20px;
+  height: 5px;
+}
+
+.corner-top-left::after {
+  top: -2px;
+  left: -2px;
+  width: 5px;
+  height: 20px;
+}
+
+/* Top Right Corner */
+.corner-top-right::before,
+.corner-top-right::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+}
+
+.corner-top-right::before {
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 5px;
+}
+
+.corner-top-right::after {
+  top: -2px;
+  right: -2px;
+  width: 5px;
+  height: 20px;
+}
+
+/* Bottom Left Corner */
+.corner-bottom-left::before,
+.corner-bottom-left::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+}
+
+.corner-bottom-left::before {
+  bottom: -2px;
+  left: -2px;
+  width: 20px;
+  height: 5px;
+}
+
+.corner-bottom-left::after {
+  bottom: -2px;
+  left: -2px;
+  width: 5px;
+  height: 20px;
+}
+
+/* Bottom Right Corner */
+.corner-bottom-right::before,
+.corner-bottom-right::after {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+}
+
+.corner-bottom-right::before {
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 5px;
+}
+
+.corner-bottom-right::after {
+  bottom: -2px;
+  right: -2px;
+  width: 5px;
+  height: 20px;
+}
+
+.max-width-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gradient-button {
+  background: linear-gradient(90deg, #1cc9f2, #1a8af0);
+  transition: all 0.3s ease;
+  border-radius: 300px;
+}
+
+.gradient-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.bordered-button {
+  border-radius: 300px;
+}
