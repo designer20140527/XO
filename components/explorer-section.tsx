@@ -3,10 +3,12 @@
 import Link from "next/link"
 import Image from "next/image"
 import { TextGenerateEffect } from "./ui/text-generate-effect"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export default function ExplorerSection() {
   const [deviceType, setDeviceType] = useState("desktop");
+  const textRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   
   // 检测设备类型
   useEffect(() => {
@@ -29,6 +31,33 @@ export default function ExplorerSection() {
     
     // 清理
     return () => window.removeEventListener('resize', checkSize);
+  }, []);
+
+  // 检测文本区域何时进入视图
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+      }
+    );
+
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
+
+    return () => {
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
+    };
   }, []);
 
   // 根据设备类型返回不同的图片尺寸
@@ -61,19 +90,24 @@ export default function ExplorerSection() {
       
       <div className="max-width-container relative z-10">
         <div className="flex flex-col items-center text-center space-y-8">
-          {/* Simple HTML heading that works on all screen sizes */}
-          <div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold font-montserrat leading-relaxed tracking-wide">
-              Step Forward, Explorer, into a new order.
+          {/* 两行标题 */}
+          <div className="space-y-1">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold font-montserrat leading-tight">
+              Step Forward, Explorer,
+            </h1>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold font-montserrat leading-tight">
+              into a new order.
             </h1>
           </div>
 
-          <div className="max-w-2xl">
-            <TextGenerateEffect 
-              words="The Oracles watch your every move. Begin marking your fate."
-              className="text-gray-300 text-xl"
-              duration={0.4}
-            />
+          <div ref={textRef} className="max-w-2xl min-h-[50px]">
+            {isVisible && (
+              <TextGenerateEffect 
+                words="The Oracles watch your every move. Begin marking your fate."
+                className="text-gray-300 text-xl"
+                duration={0.4}
+              />
+            )}
           </div>
 
           <div className="flex flex-wrap gap-6 mt-8 justify-center">
