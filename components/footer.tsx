@@ -53,7 +53,7 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                href="https://x.com/XO_SOL_COIN"
+                href="https://x.com/XO_SOL_COIN_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#1cc9f2] transition-colors"
