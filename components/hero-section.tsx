@@ -30,11 +30,11 @@ export default function HeroSection() {
               </p>
               
               <div className="flex gap-4 pt-4">
-                <Link href="https://t.me/xogrid" target="_blank" className="gradient-button px-6 py-3 font-medium">
+                <Link href="https://t.me/XO_Portal" target="_blank" className="gradient-button px-6 py-3 font-medium">
                   Telegram
                 </Link>
                 <Link
-                  href="https://twitter.com/xogrid"
+                  href="https://x.com/XO_SOL_COIN_"
                   target="_blank"
                   className="bordered-button px-6 py-3 font-medium bg-transparent border border-[#1cc9f2] hover:bg-[#1cc9f2]/10 transition-colors"
                 >
